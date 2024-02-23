@@ -33,7 +33,6 @@ class QuestionController extends GetxController with SingleGetTickerProviderMixi
   final String _name = '';
   String get name => _name;
 
-  // Constructor to accept questions
   QuestionController(List<Question> questions) {
     _questions = questions;
   }

@@ -11,17 +11,18 @@ import 'question_card.dart';
 class Body extends StatelessWidget {
   const Body({
     required Key key,
-    required this.questions,
-    required this.controller, // Tambahkan atribut controller
+    required this.questions, // Daftar pertanyaan yang akan ditampilkan
+    required this.controller, // Instance dari QuestionController
   }) : super(key: key);
 
-  final List<Question> questions;
-  final QuestionController controller; // Tambahkan atribut controller
+  final List<Question> questions; // Daftar pertanyaan
+  final QuestionController controller; // Instance dari QuestionController
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // Gambar latar belakang
         SizedBox(
           width: double.infinity,
           height: double.infinity,
@@ -34,11 +35,13 @@ class Body extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Progress bar untuk menampilkan waktu tersisa
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 child: ProgressBar(),
               ),
-              const SizedBox(height: kDefaultPadding),
+              const SizedBox(height: kDefaultPadding), // Jarak antara progress bar dan teks nomor pertanyaan
+              // Menampilkan nomor pertanyaan yang sedang ditampilkan
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 child: Obx(
@@ -62,19 +65,19 @@ class Body extends StatelessWidget {
                   ),
                 ),
               ),
-              const Divider(thickness: 1.5),
-              const SizedBox(height: kDefaultPadding),
+              const Divider(thickness: 1.5), // Garis pemisah antara nomor pertanyaan dan pertanyaan
+              const SizedBox(height: kDefaultPadding), // Jarak antara garis pemisah dan daftar pertanyaan
               Expanded(
                 child: PageView.builder(
-                  // Block swipe to next qn
+                  // Memblokir kemampuan swipe untuk pindah pertanyaan
                   physics: const NeverScrollableScrollPhysics(),
                   controller: controller.pageController,
                   onPageChanged: controller.updateTheQnNum,
-                  itemCount: controller.questions.length,
+                  itemCount: controller.questions.length, // Jumlah total pertanyaan
                   itemBuilder: (context, index) => QuestionCard(
                     key: ValueKey<String>('question_$index'),
-                    question: controller.questions[index],
-                    controller: controller, // Kirim controller ke QuestionCard
+                    question: controller.questions[index], // Mengirim pertanyaan ke QuestionCard
+                    controller: controller, // Mengirim instance QuestionController ke QuestionCard
                   ),
                 ),
               ),
