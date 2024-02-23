@@ -3,27 +3,16 @@ import 'package:get/get.dart';
 import 'package:quiz/models/Questions.dart';
 import 'package:quiz/screens/score/score_screen.dart';
 
-class QuestionController extends GetxController
-    // ignore: deprecated_member_use
-    with SingleGetTickerProviderMixin {
+class QuestionController extends GetxController with SingleGetTickerProviderMixin {
   late AnimationController _animationController;
-
-  late Animation _animation;
-
-  Animation get animation => _animation;
+  late Animation<double> _animation; // Tambah tipe data double
+  // Tambah inisialisasi variabel animasi
+  Animation<double> get animation => _animation;
   TextEditingController get fullNameController => fullNameController;
   late PageController _pageController;
   PageController get pageController => _pageController;
 
-  final List<Question> _questions = sample_data
-      .map(
-        (question) => Question(
-            id: question['id'],
-            question: question['question'],
-            options: question['options'],
-            answer: question['answer_index']),
-      )
-      .toList();
+  late List<Question> _questions;
   List<Question> get questions => _questions;
 
   bool _isAnswered = false;
@@ -44,10 +33,14 @@ class QuestionController extends GetxController
   final String _name = '';
   String get name => _name;
 
+  // Constructor to accept questions
+  QuestionController(List<Question> questions) {
+    _questions = questions;
+  }
+
   @override
   void onInit() {
-    _animationController =
-        AnimationController(duration: const Duration(seconds: 60), vsync: this);
+    _animationController = AnimationController(duration: const Duration(seconds: 60), vsync: this);
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController)
       ..addListener(() {
         update();
@@ -66,7 +59,6 @@ class QuestionController extends GetxController
   }
 
   void checkAns(Question question, int selectedIndex) {
-
     _isAnswered = true;
     _correctAns = question.answer;
     _selectedAns = selectedIndex;
@@ -91,8 +83,7 @@ class QuestionController extends GetxController
 
       _animationController.forward().whenComplete(nextQuestion);
     } else {
-
-      Get.to(const ScoreScreen());
+      Get.to(const ScoreScreen(level: '',));
     }
   }
 

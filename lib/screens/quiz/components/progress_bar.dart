@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:quiz/controllers/question_controller.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../constants.dart';
+import 'package:get/get.dart';
+import 'package:quiz/constants.dart';
+import 'package:quiz/controllers/question_controller.dart';
 
 class ProgressBar extends StatelessWidget {
-  const ProgressBar({
-    required Key key,
-  }) : super(key: key);
+  const ProgressBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +17,11 @@ class ProgressBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
       ),
       child: GetBuilder<QuestionController>(
-        init: QuestionController(),
         builder: (controller) {
           return Stack(
             children: [
               LayoutBuilder(
                 builder: (context, constraints) => Container(
-                  // from 0 to 1 it takes 60s
                   width: constraints.maxWidth * controller.animation.value,
                   decoration: BoxDecoration(
                     gradient: kPrimaryGradient,
@@ -36,13 +31,18 @@ class ProgressBar extends StatelessWidget {
               ),
               Positioned.fill(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: kDefaultPadding / 2),
+                  padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("${(controller.animation.value * 60).round()} sec"),
-                      SvgPicture.asset("icons/clock.svg"),
+                      Text(
+                        "${(controller.animation.value * 60).round()} sec",
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      SvgPicture.asset(
+                        "icons/clock.svg",
+                        color: Colors.white,
+                      ),
                     ],
                   ),
                 ),

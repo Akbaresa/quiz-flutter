@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:quiz/controllers/question_controller.dart';
 import 'package:quiz/models/Questions.dart';
 
@@ -7,16 +6,17 @@ import '../../../constants.dart';
 import 'option.dart';
 
 class QuestionCard extends StatelessWidget {
-  const QuestionCard({ 
+  const QuestionCard({
     required Key? key,
     required this.question,
+    required this.controller, // Tambahkan parameter controller
   }) : super(key: key);
 
   final Question question;
+  final QuestionController controller; // Tambahkan atribut controller
 
   @override
   Widget build(BuildContext context) {
-    QuestionController controller = Get.put(QuestionController());
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       padding: const EdgeInsets.all(kDefaultPadding),
@@ -39,7 +39,8 @@ class QuestionCard extends StatelessWidget {
             (index) => Option(
               index: index,
               text: question.options[index],
-              press: () => controller.checkAns(question, index), key: ValueKey<String>('option_$index'),
+              press: () => controller.checkAns(question, index),
+              key: ValueKey<String>('option_$index'),
             ),
           ),
         ],
