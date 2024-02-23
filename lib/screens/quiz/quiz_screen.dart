@@ -14,7 +14,9 @@ class QuizScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Question> questions = [];
 
+    // Menentukan daftar pertanyaan berdasarkan tingkat kesulitan
     if (level == 'easy') {
+      // jika level yang dilempar dari level screen adalah easy maka
       questions = easyQuestions.map((data) => Question(
         id: data['id'],
         question: data['question'],
@@ -37,6 +39,7 @@ class QuizScreen extends StatelessWidget {
       )).toList();
     }
 
+    // Menginisialisasi controller pertanyaan dengan daftar pertanyaan yang sesuai
     QuestionController controller = Get.put(QuestionController(questions));
 
     return Scaffold(
@@ -52,8 +55,8 @@ class QuizScreen extends StatelessWidget {
         ],
       ),
       body: Body(
-        key: ValueKey<String>(''),
-        questions: questions,
+        key: ValueKey<String>(''), // Kunci unik untuk widget Body
+        questions: questions, // Kirim daftar pertanyaan ke Body
         controller: controller, // Kirim controller ke Body
       ),
     );

@@ -39,7 +39,7 @@ class QuestionController extends GetxController with SingleGetTickerProviderMixi
 
   @override
   void onInit() {
-    _animationController = AnimationController(duration: const Duration(seconds: 60), vsync: this);
+    _animationController = AnimationController(duration: const Duration(seconds: 10), vsync: this);
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController)
       ..addListener(() {
         update();

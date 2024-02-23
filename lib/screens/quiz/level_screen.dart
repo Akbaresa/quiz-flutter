@@ -25,7 +25,7 @@ class LevelScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Get.to(() => QuizScreen(level : 'easy'));
+                    Get.to(() => const QuizScreen(level : 'easy'));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green, // Warna hijau untuk level mudah
@@ -45,7 +45,7 @@ class LevelScreen extends StatelessWidget {
                 const SizedBox(height: 20), // Jarak antara tombol
                 ElevatedButton(
                   onPressed: () {
-                    Get.to(() =>  QuizScreen(level : 'medium'));
+                    Get.to(() => const QuizScreen(level : 'medium'));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.yellow, // Warna kuning untuk level menengah
@@ -65,7 +65,7 @@ class LevelScreen extends StatelessWidget {
                 const SizedBox(height: 20), // Jarak antara tombol
                 ElevatedButton(
                   onPressed: () {
-                    Get.to(() =>  QuizScreen(level : 'hard'));
+                    Get.to(() => const QuizScreen(level : 'hard'));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red, // Warna merah untuk level sulit

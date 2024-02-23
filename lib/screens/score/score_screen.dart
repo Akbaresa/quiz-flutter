@@ -11,30 +11,32 @@ class ScoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Mendapatkan instance dari QuestionController yang telah diinisialisasi sebelumnya
     QuestionController qnController = Get.find();
 
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
         children: [
+          // Menambahkan gambar latar belakang dengan SVG
           SvgPicture.asset("icons/bg.svg", fit: BoxFit.fill),
           Column(
             children: [
               const Spacer(flex: 3),
               Text(
-                "Score",
+                "Score", // Judul "Score"
                 style: Theme.of(context)
                     .textTheme
                     .displaySmall
-                    ?.copyWith(color: kSecondaryColor),
+                    ?.copyWith(color: kSecondaryColor), // Mengatur gaya teks
               ),
-              Spacer(),
+              const Spacer(),
               Text(
-                "${qnController.numOfCorrectAns * 20}/100",
+                "${qnController.numOfCorrectAns * 20}/100", // Menampilkan skor (jumlah jawaban benar * 20) dari 100
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium
-                    ?.copyWith(color: kSecondaryColor),
+                    ?.copyWith(color: kSecondaryColor), // Mengatur gaya teks
               ),
               const Spacer(flex: 3),
             ],
@@ -44,3 +46,4 @@ class ScoreScreen extends StatelessWidget {
     );
   }
 }
+

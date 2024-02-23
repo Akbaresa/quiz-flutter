@@ -84,7 +84,7 @@ const List<Map<String, dynamic>> hardQuestions = [
     "id": 2,
     "question": "Berapa akar kuadrat dari 144?",
     "options": ["10", "11", "12", "13"],
-    "answer_index": 1,
+    "answer_index": 2,
   },
   {
     "id": 3,
@@ -100,8 +100,8 @@ const List<Map<String, dynamic>> hardQuestions = [
   },
   {
     "id": 5,
-    "question": "Berapa jumlah planet dalam tata surya?",
-    "options": ["6", "7", "8", "9"],
+    "question": "Planet dalam tata surya yang memiliki diameter terbesar adalah",
+    "options": ["Neptunus", "Uranus", "Jupiter", "Mars"],
     "answer_index": 2,
   },
 ];
