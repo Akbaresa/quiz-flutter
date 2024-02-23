@@ -13,35 +13,35 @@ class ProgressBar extends StatelessWidget {
       width: double.infinity,
       height: 35,
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFF3F4768), width: 3),
-        borderRadius: BorderRadius.circular(50),
+        border: Border.all(color: const Color(0xFF3F4768), width: 3), // Menentukan dekorasi border
+        borderRadius: BorderRadius.circular(50), // Memberikan border radius ke container
       ),
       child: GetBuilder<QuestionController>(
-        builder: (controller) {
+        builder: (controller) { // Menggunakan GetBuilder untuk membangun widget yang bergantung pada QuestionController
           return Stack(
             children: [
               LayoutBuilder(
                 builder: (context, constraints) => Container(
-                  width: constraints.maxWidth * controller.animation.value,
+                  width: constraints.maxWidth * controller.animation.value, // Mengatur lebar container berdasarkan nilai animasi dari controller
                   decoration: BoxDecoration(
-                    gradient: kPrimaryGradient,
-                    borderRadius: BorderRadius.circular(50),
+                    gradient: kPrimaryGradient, // Memberikan dekorasi gradient ke container
+                    borderRadius: BorderRadius.circular(50), // Memberikan border radius ke container
                   ),
                 ),
               ),
               Positioned.fill(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
+                  padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2), // Memberikan padding horizontal
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "${(controller.animation.value * 60).round()} sec",
-                        style: const TextStyle(color: Colors.white),
+                        "${(controller.animation.value * 60).round()} sec", // Menampilkan waktu yang tersisa dalam detik
+                        style: const TextStyle(color: Colors.white), // Mengatur warna teks menjadi putih
                       ),
                       SvgPicture.asset(
-                        "icons/clock.svg",
-                        color: Colors.white,
+                        "icons/clock.svg", // Menampilkan gambar ikon jam
+                        color: Colors.white, // Mengatur warna ikon menjadi putih
                       ),
                     ],
                   ),
