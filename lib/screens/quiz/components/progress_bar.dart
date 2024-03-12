@@ -36,7 +36,7 @@ class ProgressBar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "${(controller.animation.value * 10).round()} sec", // Menampilkan waktu yang tersisa dalam detik
+                        "${(controller.animation.value * 30).round()} sec", // Menampilkan waktu yang tersisa dalam detik
                         style: const TextStyle(color: Colors.white), // Mengatur warna teks menjadi putih
                       ),
                       SvgPicture.asset(

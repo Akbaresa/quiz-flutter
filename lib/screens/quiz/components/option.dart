@@ -18,7 +18,7 @@ class Option extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<QuestionController>( // Menggunakan GetBuilder untuk membangun widget yang bergantung pada QuestionController
+    return GetBuilder<QuestionController>( 
       builder: (qnController) { // Menggunakan builder untuk memperbarui widget ketika nilai QuestionController berubah
         Color getTheRightColor() { // Fungsi untuk mendapatkan warna yang benar berdasarkan status jawaban
           if (qnController.isAnswered) { // Jika pertanyaan sudah dijawab
@@ -36,33 +36,36 @@ class Option extends StatelessWidget {
         }
 
         return InkWell(
-          onTap: press, // Ketika opsi dipilih, panggil fungsi press
+          onTap: press,
           child: Container(
             margin: const EdgeInsets.only(top: kDefaultPadding),
             padding: const EdgeInsets.all(kDefaultPadding),
             decoration: BoxDecoration(
-              border: Border.all(color: getTheRightColor()), // Berikan warna border berdasarkan status jawaban
-              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: getTheRightColor()),
+              borderRadius: BorderRadius.circular(10)
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                   child: Text(
-                    "${String.fromCharCode('a'.codeUnitAt(0) + index)}. $text", // Menampilkan teks opsi dengan format 'a. [text]'
-                    style: TextStyle(color: getTheRightColor(), fontSize: 16),
+                    "${String.fromCharCode('a'.codeUnitAt(0) + index)}. $text",
+                    style: TextStyle(color: getTheRightColor(),
+                    fontSize: 16
+                    ),
                   ),
+                  
                 ),
                 Container(
                   height: 18,
                   width: 18,
                   decoration: BoxDecoration(
-                    color: getTheRightColor() == kGrayColor ? Colors.transparent : getTheRightColor(), // Jika warna adalah abu-abu, gunakan transparan, jika tidak, gunakan warna yang benar
+                    color: getTheRightColor() == kGrayColor ? Colors.transparent : getTheRightColor(),
                     borderRadius: BorderRadius.circular(30),
-                    border: Border.all(color: getTheRightColor()), // Berikan warna border berdasarkan status jawaban
+                    border: Border.all(color: getTheRightColor()),
                   ),
-                  child: getTheRightColor() == kGrayColor ? null : Icon(getTheRightIcon(), size: 10), // Jika warna adalah abu-abu, tidak perlu ikon, jika tidak, gunakan ikon yang sesuai
-                )
+                  child: getTheRightColor() == kGrayColor ? null : Icon(getTheRightIcon() , size: 10,),
+                ),
               ],
             ),
           ),

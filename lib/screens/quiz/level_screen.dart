@@ -23,70 +23,68 @@ class LevelScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Get.to(() => const QuizScreen(level : 'easy'));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green, // Warna hijau untuk level mudah
-                  ),
-                  child: const SizedBox(
-                    width: 200, // Lebar tombol
-                    height: 60,
-                    child: Center(
-                      child: Text(
-                        'Easy',
-                        style: TextStyle(color: Colors.black,
-                          fontWeight: FontWeight.bold), // Warna teks putih
+                ElevatedButton(onPressed: () {
+                  Get.to(() => const QuizScreen(level: "easy"));
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green
+                ), 
+                child: const SizedBox(
+                  width: 200,
+                  height: 60,
+                  child: Center(
+                    child: Text(
+                      "easy",
+                      style: TextStyle(color: Colors.black,
+                      fontWeight: FontWeight.bold
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 20), // Jarak antara tombol
-                ElevatedButton(
-                  onPressed: () {
-                    Get.to(() => const QuizScreen(level : 'medium'));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow, // Warna kuning untuk level menengah
-                  ),
-                  child: const SizedBox(
-                    width: 200, // Lebar tombol
-                    height: 60,
-                    child: Center(
-                      child: Text(
-                        'Medium',
-                        style: TextStyle(color: Colors.black,
-                          fontWeight: FontWeight.bold), // Warna teks putih
+                ),
+                const SizedBox(height: 20,),
+                ElevatedButton(onPressed: () {
+                  Get.to(() => const QuizScreen(level: "medium"));
+                }, 
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.yellow
+                ),
+                child: const SizedBox(
+                  width: 200,
+                  height: 60,
+                  child: Center(
+                    child: Text(
+                      "medium",
+                      style: TextStyle(color: Colors.black,
+                      fontWeight: FontWeight.bold
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 20), // Jarak antara tombol
-                ElevatedButton(
-                  onPressed: () {
-                    Get.to(() => const QuizScreen(level : 'hard'));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red, // Warna merah untuk level sulit
-                  ),
-                  child: const SizedBox(
-                    width: 200, // Lebar tombol
-                    height: 60,
-                    child: Center(
-                      child: Text(
-                        'Hard',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold
-                          ), // Warna teks putih
-                      ),
-                    ),
+              ),
+              const SizedBox(height: 20,),
+              ElevatedButton(onPressed: () {
+                Get.to(() => const QuizScreen(level: "hard"));
+              }, 
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red
+              ),
+              child: const  SizedBox(
+                width: 200,
+                height: 60,
+                child : Center(
+                child: Text(
+                  "hard",
+                  style: TextStyle(color: Colors.black,
+                  fontWeight: FontWeight.bold
                   ),
                 ),
+              ),
+              )
+              ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );

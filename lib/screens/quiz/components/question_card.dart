@@ -9,17 +9,17 @@ class QuestionCard extends StatelessWidget {
   const QuestionCard({
     required Key? key,
     required this.question,
-    required this.controller, // Tambahkan parameter controller
+    required this.controller, 
   }) : super(key: key);
 
   final Question question;
-  final QuestionController controller; // Tambahkan atribut controller
+  final QuestionController controller; 
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: kDefaultPadding), // Atur margin horizontal
-      padding: const EdgeInsets.all(kDefaultPadding), // Atur padding untuk kontainer
+      margin: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+      padding: const EdgeInsets.all(kDefaultPadding), 
       decoration: BoxDecoration(
         color: Colors.white, // Atur warna latar belakang menjadi putih
         borderRadius: BorderRadius.circular(25), // Terapkan radius border ke kontainer

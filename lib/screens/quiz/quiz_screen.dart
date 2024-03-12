@@ -12,35 +12,33 @@ class QuizScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Question> questions = [];
+    List<Question> question = [];
 
-    // Menentukan daftar pertanyaan berdasarkan tingkat kesulitan
-    if (level == 'easy') {
-      // jika level yang dilempar dari level screen adalah easy maka
-      questions = easyQuestions.map((data) => Question(
-        id: data['id'],
-        question: data['question'],
+    if(level == 'easy'){
+      question = easyQuestions.map((data) => Question(
+        id: data['id'], 
+        question: data['question'], 
+        answer: data['answer_index'], 
         options: List<String>.from(data['options']),
-        answer: data['answer_index'],
-      )).toList();
-    } else if (level == 'medium') {
-      questions = mediumQuestion.map((data) => Question(
-        id: data['id'],
-        question: data['question'],
-        options: List<String>.from(data['options']),
-        answer: data['answer_index'],
-      )).toList();
-    } else if (level == 'hard') {
-      questions = hardQuestions.map((data) => Question(
-        id: data['id'],
-        question: data['question'],
-        options: List<String>.from(data['options']),
-        answer: data['answer_index'],
-      )).toList();
+        )
+      ).toList();
+    }else if( level == 'medium'){
+      question = mediumQuestion.map((data) => Question(
+        id: data['id'], 
+        question: data['question'], 
+        answer: data['answer_index'], 
+        options: List<String>.from(data['options']))
+        ).toList();
+    }else if(level == 'hard'){
+      question = hardQuestions.map((data) => Question(
+        id: data['id'], 
+        question: data['question'], 
+        answer: data['answer_index'], 
+        options: List<String>.from(data['options'])
+        )).toList();
     }
 
-    // Menginisialisasi controller pertanyaan dengan daftar pertanyaan yang sesuai
-    QuestionController controller = Get.put(QuestionController(questions));
+    QuestionController controller = Get.put(QuestionController(question));
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -50,15 +48,15 @@ class QuizScreen extends StatelessWidget {
         actions: [
           FloatingActionButton(
             onPressed: controller.nextQuestion,
-            child: const Text("Skip"),
+            child: const Text("skip"),
           ),
         ],
       ),
       body: Body(
-        key: ValueKey<String>(''), // Kunci unik untuk widget Body
-        questions: questions, // Kirim daftar pertanyaan ke Body
-        controller: controller, // Kirim controller ke Body
-      ),
+        key: ValueKey<String>(''), 
+        questions: question, 
+        controller: controller
+        ),
     );
   }
 }
