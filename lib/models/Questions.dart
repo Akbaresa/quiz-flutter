@@ -50,7 +50,7 @@ const List<Map<String, dynamic>> easyQuestions = [
   {
     "id": 2,
     "question": "Siapakah presiden Indonesia sekarang?",
-    "options": ["Joko Widodo", "Susilo Bambang Yudhoyono", "Megawati Soekarnoputri", "Soekarno"],
+    "options": ["Joko Widodo", "Susilo Bambang Yudhoyono", "Anies Baswedan", "Prabowo subianto"],
     "answer_index": 0,
   },
   {
